@@ -1,0 +1,29 @@
+<%- include("partials/head") %> 
+<%- include("partials/nav") %>
+  <div class="space-2 space-lg-0">
+    <div class="container">
+        <div class="row justify-content-center">
+           <div class="col-lg-10">
+                <div class="mt-5">
+                    <div class="row">
+                        <div class="col-md-4 mt-5">
+                            <img class="img-fluid home-img" src="/img/discussion-scene.svg" alt="Image Description">
+                        </div>
+                        <% if(blog){ %>
+                        <div class="blogs col-md-8">
+                            <a href="#">
+                                <h3><%= blog.title %></h3>
+                                <small class="mb-4 text-muted">Snippets - <%= blog.snippet %>.</small>
+                                <p class="font-weight-bold"><%= blog.body %>.</p>
+                            </a> 
+                        </div>
+                        <% }else{ %>
+                        <p class="text-danger">There is no such post</p>
+                        <% } %>
+                    </div>
+              </div>
+           </div>
+        </div>
+    </div>
+</div> 
+<%- include("partials/footer") %> 

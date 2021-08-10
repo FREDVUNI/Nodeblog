@@ -1,0 +1,35 @@
+<%- include('partials/head') %>
+<%- include('partials/nav') %>
+<div class="space-2 space-lg-0">
+    <div class="container">
+        <div class="row justify-content-center">
+           <div class="col-lg-6">
+                <div class="mt-5">
+                    <h1>Create new post</h1>
+                    <form action="http://localhost:3000/blogs/api/posts" method="POST">
+                        <div class="form-group">
+                            <label for="title">Title</label>
+                            <input type="text" name="title" id="" class="form-control" placeholder="Enter post title">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="" class="form-control" placeholder="Enter user email">
+                        </div>
+                        <div class="form-group">
+                            <label for="snippet">Snippet</label>
+                            <input type="text" name="snippet" id="" class="form-control" placeholder="Enter post snippet">
+                        </div>
+                        <div class="form-group">
+                            <label for="body">Body</label>
+                            <textarea name="body" id="" cols="20" rows="5" class="form-control" placeholder="Enter post body"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary blog-submit btn-block">save changes</button>
+                        </div>
+                    </form>
+              </div>
+           </div>
+        </div>
+    </div>
+</div>
+<%- include('partials/footer') %>

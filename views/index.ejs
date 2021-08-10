@@ -1,0 +1,38 @@
+<%- include('partials/head') %>
+<%- include('partials/nav') %>
+<div class="space-2 space-lg-0">
+    <div class="container">
+        <div class="row justify-content-center">
+           <div class="col-lg-8">
+               <div class="row">
+                    <div class="col-lg-5 mb-5 mt-11">
+                        <h1 class="display-4 mb-3">
+                        Turn your ideas into a start up
+                        </h1>
+                        <p class="lead">Front's feature-rich designed demo pages help you create the best possible product.</p>
+                        <a class="btn btn-primary" href="/blogs/about">Get Started</a>
+                    </div>
+                <div class="col-lg-7 mt-11">
+                    <img class="img-fluid w-100 home-img" src="/img/discussion-scene.svg" alt="Image Description">
+                </div>
+                </div>
+                <div class="mt-5">
+                    <% if(blogs.length > 0){ %>
+                    <div class="blogs">
+                        <% blogs.forEach(blog=>{ %>
+                        <a href="blogs/<%= blog._id %>">
+                            <h3><%= blog.title %></h3>
+                            <small class="mb-4 text-muted">Snippets - <%= blog.snippet %>.</small>
+                            <p class="font-weight-bold"><%= blog.body %>.</p>
+                        </a> 
+                        <% }) %>
+                    </div>
+                    <% }else{ %>
+                     <p class="text-danger">There are no available posts.</p>
+                    <% } %>
+              </div>
+           </div>
+        </div>
+    </div>
+</div>
+<%- include('partials/footer') %>
