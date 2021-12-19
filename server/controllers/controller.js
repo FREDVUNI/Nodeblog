@@ -8,10 +8,7 @@ exports.getPosts = (req,res)=>{
         blogDB.findById(id)
         .then(data=>{
             if(!data){
-                res.status(404).send({
-                    message:`Post with id ${id} does not exit`
-                })
-                // res.redirect("404")
+                res.status(404).render("404",{title:"404 Error"})
             }else{
                 res.send(data)
             }
@@ -58,7 +55,7 @@ exports.createPost =(req,res)=>{
         if(id){
             blogDB.findByIdAndDelete(id)
             .then(response=>{
-                res.redirect("/blogs")
+                res.json({redirect:"/blogs"})
             })
             .catch(error=>{
                 console.log(`something went wrong ${error}`);
@@ -71,9 +68,14 @@ exports.createPost =(req,res)=>{
         }
     }
     exports.updatePost = (req,res) =>{
+        if(!req.body){
+            res.status(400).send({
+                message:`Fill out the fields.`
+            })
+        }
         const id = req.query.id
         if(id){
-            blogDB = findByIdAndUpdate(id)
+            blogDB = findByIdAndUpdate(id,req.body.record,{UseFindAndModify:true})
             .then(response=>{
                 res.status(404).send({
                     message:message.error || `Failed to find post with id ${id}`

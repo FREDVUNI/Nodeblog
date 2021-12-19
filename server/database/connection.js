@@ -8,7 +8,7 @@ const connectDB = async()=>{
             useFindAndModify:false,
             useNewUrlParser:true
         })
-        console.log(`mongodb started on port: ${con.connection.host}`);
+        console.log(`mongodb started on port: ${con.connection.host}:${con.connection.port}`);
     }
     catch(err){
         console.log(`something went wrong. ${err}`);

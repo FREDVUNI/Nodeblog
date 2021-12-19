@@ -8,6 +8,12 @@
                     <div class="row">
                         <div class="col-md-4 mt-5">
                             <img class="img-fluid home-img" src="/img/discussion-scene.svg" alt="Image Description">
+                            <a href="/blogs/update" class="btn btn-light btn-sm">
+                                <i class="fas fa-pencil-alt fa-fw" title="edit post"></i>
+                            </a>
+                            <a data-doc=<%= blog._id%> class="delete">
+                                <i class="fas fa-trash fa-fw" title="delete post"></i>
+                            </a>
                         </div>
                         <% if(blog){ %>
                         <div class="blogs col-md-8">
@@ -26,4 +32,20 @@
         </div>
     </div>
 </div> 
+
+<script>
+    const deleteblog = document.querySelector("a.delete")
+    deleteblog.addEventListener("click",(e)=>{
+        const endpoint =`/blogs/${deleteblog.dataset.doc}`
+        fetch(endpoint,{
+            method:"DELETE"
+        })
+        .then((response)=>{
+            window.location.href="/blogs"
+        })
+        .catch(error=>{
+            console.log(error)
+        })
+    })
+</script>
 <%- include("partials/footer") %> 
